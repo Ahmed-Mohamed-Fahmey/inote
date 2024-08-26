@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "597150922119",
+    "project_id": "inote-f9cc9",
+    "storage_bucket": "inote-f9cc9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:597150922119:android:ee219499d33e7ef8f94f22",
+        "android_client_info": {
+          "package_name": "com.making_inote.inote"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDz3kb0dUDEgGf93Qsjd6KdVqXAvaIKMXA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

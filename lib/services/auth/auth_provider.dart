@@ -2,6 +2,7 @@ import 'package:inote/services/auth/auth_user.dart';
 
 // this is an interface for any auth provider used in the application
 abstract class AuthProvider {
+  Future<void> initialize();
   AuthUser? get currentUser;
 
   Future<AuthUser> logIn({

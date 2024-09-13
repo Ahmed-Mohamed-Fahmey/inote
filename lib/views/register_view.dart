@@ -70,7 +70,7 @@ class _RegisterViewState extends State<RegisterView> {
                   context,
                   'Invalid email address',
                 );
-              } on WeakPassordAuthException {
+              } on WeakPasswordAuthException {
                 await showErrorMessage(
                   context,
                   "Password is too weak",

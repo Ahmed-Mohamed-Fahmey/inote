@@ -1,7 +1,7 @@
 // register exceptions
 class InvalidEmailAuthException implements Exception {}
 
-class WeakPassordAuthException implements Exception {}
+class WeakPasswordAuthException implements Exception {}
 
 class EmailAlreadyInUseAuthException implements Exception {}
 

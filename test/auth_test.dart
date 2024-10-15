@@ -90,24 +90,19 @@ class MockAuthProvider implements AuthProvider {
   var _isInitialized = false;
   bool get isInitialized => _isInitialized;
 
+  // what register does is:
+  // first ensure that servise is initialized
+  // talk with backend
+  // add user there
+  // login user
+  // return user
   @override
   Future<AuthUser> createUSer({
     required String email,
     required String password,
   }) async {
-    // what register does is:
-    // first ensure that servise is initialized
-    // talk with backend
-    // add user there
-    // login user
-    // return user
     if (!isInitialized) throw NotInitializedException();
     await Future.delayed(const Duration(seconds: 1));
-
-    // * logic already in logIn which is called
-    // if (email == 'foo@bar.com') throw InvalidEmailAuthException();
-    // if (password == 'foobar') throw WeakPasswordAuthException();
-
     return logIn(
       email: email,
       password: password,
@@ -123,17 +118,17 @@ class MockAuthProvider implements AuthProvider {
     _isInitialized = true;
   }
 
+  //ensure init
+  // take email and pass
+  // check if they meet requirements
+  // check if exist in database
+  // set user
+  // return him
   @override
   Future<AuthUser> logIn({
     required String email,
     required String password,
   }) {
-    //ensure init
-    // take email and pass
-    // check if they meet requirements
-    // check if exist in database
-    // set user
-    // return him
     if (!isInitialized) throw NotInitializedException();
     if (email == 'foo@bar.com') throw UserNotFoundAuthException();
     if (password == 'foobar') throw WrongPasswordAuthException();
@@ -142,25 +137,28 @@ class MockAuthProvider implements AuthProvider {
     return Future.value(user);
   }
 
+  // ensure init
+  // ensure logged in (ther is a user)
+  // wait
+  // make user null
   @override
   Future<void> logOut() async {
-    // ensure init
-    // ensure logged in (ther is a user)
-    // wait
-    // make user null
     if (!isInitialized) throw NotInitializedException();
     if (_user == null) throw UserNotLoggedInException();
     await Future.delayed(const Duration(seconds: 1));
     _user = null;
   }
 
+  // isInit
+  // isLoggedIn
+  // fake wait
+  // create new user with verified email
   @override
   Future<void> sendEmailVerification() async {
-    if (!isInitialized) throw NotInitializedException(); // isInit
-    if (_user == null) throw UserNotLoggedInException(); // isLoggedIn
-    await Future.delayed(const Duration(seconds: 1)); // fake wait
-    const newUser =
-        AuthUser(isEmailVerified: true); // create new user with verified email
+    if (!isInitialized) throw NotInitializedException();
+    if (_user == null) throw UserNotLoggedInException();
+    await Future.delayed(const Duration(seconds: 1));
+    const newUser = AuthUser(isEmailVerified: true);
     _user = newUser;
   }
 }
